@@ -9,17 +9,18 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductCategoryMenuComponent implements OnInit {
 
-  productCategories: ProductCategory[] | undefined;
-
+  productCategories!: ProductCategory[];
+  
   constructor(private productService: ProductService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.listProductCategories();
   }
 
   listProductCategories() {
+
     this.productService.getProductCategories().subscribe(
-      (      data: ProductCategory[] | undefined) => {
+      data => {
         console.log('Product Categories=' + JSON.stringify(data));
         this.productCategories = data;
       }
